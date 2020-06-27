@@ -4,7 +4,7 @@
   <section
     class="avatar"
     style="
-      background: url(https://source.unsplash.com/collection/3465564/400x400)
+      background: url({{instructor.avatar_url}})
         no-repeat center center / cover;
     "
   ></section>
@@ -13,27 +13,29 @@
 
     <div class="item">
       <div>instrutor</div>
-      <div>Carlos Enrique</div>
+      <div>{{ instructor.name }}</div>
     </div>
     <div class="item">
       <div>Idade</div>
-      <div>29</div>
+      <div>{{ instructor.birth }}</div>
     </div>
     <div class="item">
       <div>Sexo</div>
-      <div>Masculino</div>
+      <div>{{ instructor.gender }}</div>
     </div>
     <div class="item">
       <div>Acompanhamento</div>
       <div>
-        <span>Musculaçâo</span>
-        <span>Crossfit</span>
+        {% for service in services %}
+        <span>{{ service }}</span>
+        {% endfor %}
       </div>
     </div>
 
+
     <div class="item">
       <div>Desde</div>
-      <div>01/01/2019</div>
+      <div>{{ instructor.created_at }}</div>
     </div>
   </section>
 </div>
