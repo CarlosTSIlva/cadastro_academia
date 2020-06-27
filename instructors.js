@@ -7,10 +7,16 @@ exports.show = function (req, res) {
     return instructor.id == id;
   });
   if (!foundInstructor) return res.send("instrutor nao existe");
-  return res.render("/instructors/show", {
-    instructor: foundInstructor,
-  });
+  const instructor = {
+    ...foundInstructor,
+    age:"",
+    services: foundInstructor.services.split(","),
+    created_at:"",
+  }
+  
+  return res.render("instructors/show", { instructor });
 };
+
 exports.post = function (req, res) {
   const keys = Object.keys(req.body);
   for (key of keys) {
