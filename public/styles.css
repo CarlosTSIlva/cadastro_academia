@@ -131,7 +131,8 @@ input::placeholder {
   font-size: 16;
   font-weight: normal;
 }
-button {
+button,
+a.button {
   padding: 8px 23px;
   background-color: var(--primari-color);
   color: white;
@@ -139,4 +140,10 @@ button {
   margin-top: 32px;
   width: 100%;
   font-size: 16px;
+}
+a.button{
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
 }
