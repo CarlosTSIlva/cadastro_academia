@@ -1,6 +1,12 @@
 const fs = require("fs");
 const data = require("./data.json");
 const { date } = require("./utils");
+
+
+exports.index = function (req, res) {
+  return res.render("instructors/index",{ instructors: data.instructors })
+};
+
 exports.show = function (req, res) {
   const { id } = req.params;
   const foundInstructor = data.instructors.find(function (instructor) {
