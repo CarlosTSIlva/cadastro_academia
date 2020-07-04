@@ -1,6 +1,8 @@
 {% extends "layout.njk" %} {% block content %}
 
 <div class="card table-container">
+  <a href="/instructors/create">novo</a>
+
   <table whidth="100%">
     <thead>
       <tr>
@@ -14,7 +16,7 @@
       <tr>
         <td>
           <span
-            style="background-image: url({{instructor.avatar_url}});"
+          style="background-image: url({{instructor.avatar_url}})"
           ></span>
           {{ instructor.name }}
         </td>
@@ -22,7 +24,7 @@
           <a>{{ instructor.services }}</a>
         </td>
         <td>
-          <a href="/instructors/{{instructor.id}}" rel="noopener noreferrer"
+          <a href="/instructors/{{ instructor.id }}" rel="noopener noreferrer"
             >ver</a
           >
         </td>

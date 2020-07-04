@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
 :root {
   --primari-color: #7159c1;
   --secondary-color: #f7df1e;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@
 }
 body {
   background-color: var(--primari-color);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -41,7 +42,7 @@ header {
   color: var(--primari-color);
 }
 .links a::after {
-  content: "";
+  content: '';
   width: 0;
   height: 2px;
   background-color: var(--primari-color);
@@ -123,7 +124,7 @@ input {
   font-weight: bold;
   font-size: 18px;
 }
-input[type="radio"] {
+input[type='radio'] {
   width: initial;
   margin-right: 4px;
 }
@@ -148,7 +149,7 @@ a.button {
   text-decoration: none;
 }
 
-.form-delete button[type="submit"] {
+.form-delete button[type='submit'] {
   margin-top: -8px;
   background-color: lightcoral;
   padding: 8px 23px;
@@ -199,7 +200,8 @@ tbody tr td:first-child span {
   box-shadow: 3px 1px 6px -4px black;
   border: 2px solid white;
 }
-tbody tr td:last-child a {
+tbody tr td:last-child a,
+.table-container > a {
   background-color: var(--primari-color);
   padding: 8px 16px;
   text-decoration: none;
@@ -211,6 +213,10 @@ tbody tr td:last-child a {
 .table-container thead tr th:last-child,
 th:last-child {
   align-items: center;
+}
+.table-container > a {
+  margin-bottom: 16px;
+  display: inline-block;
 }
 
 .container-texto a {
