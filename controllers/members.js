@@ -9,32 +9,19 @@ exports.index = function (req, res) {
 exports.show = function (req, res) {
   const { id } = req.params;
   const foundMember = data.members.find(function (member) {
-    return member.id == id;
+    return id == member.id;
   });
   if (!foundMember) return res.send("instrutor nao existe");
 
-  function age(timestamp) {
-    const today = new Date();
-    const birthDate = new Date(timestamp);
-
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const month = today.getMonth() - birthDate.getMonth();
-
-    if (month < 0 || (month == 0 && today.getDate < birthDate.getDate())) {
-      age = age - 1;
-    }
-
-    return age;
-  }
   const member = {
     ...foundMember,
-    age: age(foundMember.birth),
+    birth: date(foundMember.birth).birthDay,
   };
-
   return res.render("members/show", { member });
 };
+
 exports.create = function (req, res) {
-  return res.render("member/create");
+  return res.render("members/create");
 };
 
 exports.post = function (req, res) {
@@ -44,19 +31,18 @@ exports.post = function (req, res) {
       return res.send("Tente novamente");
     }
   }
-  let { avatar_url, birth, name, services, gender } = req.body;
-  birth = Date.parse(birth);
-  const created_at = Date.now();
-  const id = Number(data.members.length + 1);
+
+  birth = Date.parse(req.body.birth);
+  let id = 1;
+  const lastMember = [data.members.length - 1].id;
+  if (lastMember) {
+    id = lastMember.id + 1;
+  }
 
   data.members.push({
     id,
-    name,
-    avatar_url,
+    ...req.body,
     birth,
-    gender,
-    services,
-    created_at,
   });
   fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
     if (err) return res.send("seu arquivo comrrompeu");
@@ -74,7 +60,7 @@ exports.edit = function (req, res) {
   if (!foundMember) return res.send("instrutosr nao existe");
   const member = {
     ...foundMember,
-    birth: date(foundMember.birth),
+    birth: date(foundMember.birth).iso,
   };
 
   return res.render("members/edit", { member });

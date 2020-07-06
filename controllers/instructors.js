@@ -78,7 +78,7 @@ exports.edit = function (req, res) {
   if (!foundInstructor) return res.send("instrutosr nao existe");
   const instructor = {
     ...foundInstructor,
-    birth: date(foundInstructor.birth),
+    birth: date(foundInstructor.birth).iso,
   };
 
   return res.render("instructors/edit", { instructor });

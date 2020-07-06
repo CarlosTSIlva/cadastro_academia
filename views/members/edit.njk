@@ -2,21 +2,30 @@
 
 <div class="card">
       <section class="avatar" style="
-              background: url(https://source.unsplash.com/collection/3465564/400x400)
+              background: url({{member.avatar_url}})
                 no-repeat center center / cover;
             "></section>
             
-  <form method="POST" action="/instructors?_method=PUT">
+  <form method="POST" action="/members?_method=PUT">
 
     <section class="details">
-      <h3>Editar o Instrutor</h3>
-      {% include 'instructors/fields.njk' %}
-      <input type="hidden" name="id" value={{instructor.id}} />
+      <h3>Editar o Membro</h3>
+      {% include 'members/fields.njk' %}
+      <input type="hidden" name="id" value={{member.id}} />
       </form>
-        <form method="POST" class="form-delete" action="/instructors?_method=DELETE">
-          <input type="hidden" name="id" value={{instructor.id}} />
+        <form method="POST" class="form-delete" action="/members?_method=DELETE">
+          <input type="hidden" name="id" value={{member.id}} />
           <button type="submit">Deletar</button>
         </form>
+        <script>
+         const formDelete = document.querySelector(".form-delete")
+          formDelete.addEventListener("submit", function (event){
+            const confirmation = confirm("deseja deletar mesmo?");
+            if (!confirmation) {
+              event.preventDefault();
+            }
+          });
+        </script>
       </section>
       
     

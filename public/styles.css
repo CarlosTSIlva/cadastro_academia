@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap");
 :root {
   --primari-color: #7159c1;
   --secondary-color: #f7df1e;
@@ -11,7 +11,7 @@
 }
 body {
   background-color: var(--primari-color);
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 header {
@@ -42,7 +42,7 @@ header {
   color: var(--primari-color);
 }
 .links a::after {
-  content: '';
+  content: "";
   width: 0;
   height: 2px;
   background-color: var(--primari-color);
@@ -117,14 +117,14 @@ header {
 }
 /*form */
 
-input {
+input, select {
   width: 100%;
   outline: none;
   color: #555;
   font-weight: bold;
   font-size: 18px;
 }
-input[type='radio'] {
+input[type="radio"] {
   width: initial;
   margin-right: 4px;
 }
@@ -149,7 +149,7 @@ a.button {
   text-decoration: none;
 }
 
-.form-delete button[type='submit'] {
+.form-delete button[type="submit"] {
   margin-top: -8px;
   background-color: lightcoral;
   padding: 8px 23px;
