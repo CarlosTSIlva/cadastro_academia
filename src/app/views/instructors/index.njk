@@ -1,13 +1,20 @@
 {% extends "layout.njk" %} {% block content %}
 
 <div class="card table-container">
-  <a href="/instructors/create">novo</a>
+  <div class="header">
+    <a class="button" href="/instructors/create">novo</a>
+    <form action="/instructors" method="GET">
+    <input type="text" name="filter" placeholder="Nome ou Atendimento" value={{filter}}>
+    <button type="submit">Filtrar</button>
+    </form>
+  </div>
 
   <table whidth="100%">
     <thead>
       <tr>
         <th>Instructor</th>
         <th>Atendimento</th>
+        <th>Alunos</th>
         <th>Ação</th>
       </tr>
     </thead>
@@ -21,17 +28,26 @@
           {{ instructor.name }}
         </td>
         <td class="container-texto">
-          <a>{{ instructor.services }}</a>
+          <a>{{instructor.services}}</a>
         </td>
         <td>
-          <a href="/instructors/{{ instructor.id }}" rel="noopener noreferrer"
+          <a>{{instructor.total_students}}</a>
+        </td>
+        <td>
+          <a href="/instructors/{{instructor.id}}" rel="noopener noreferrer"
             >ver</a
           >
         </td>
+        
       </tr>
       {% endfor %}
     </tbody>
   </table>
+  <div class="pagination"
+  data-page={{pagination.page}}
+  data-total={{pagination.total}}
+  date-filter={{filter}}
+  ></div>
 </div>
 
 {% endblock content %}
